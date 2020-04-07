@@ -105,10 +105,18 @@
         <a href="/" class="Edyodastories" >
             <span class="EdyodaHome" style="margin:0">EDYODA</span>
             <p class="Edyodasubheading" style="margin:0">Stories</p>
-        </a>
+        </a>        
         <span class="Categories">
             Explore Categories <img class="Categoriesdropdown"src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQu9KujCMkus_FPohJdZt17XMQ_-XzSabidnvgPwaGR8Chv_KfF"/>
-        </span> 
+        </span>
+        
+        {% if user.is_authenticated %}
+            <p> {{ user.get_username }} </p>
+            <p> <a href = "{% url 'logout' %} ">Logout</a> </p>
+        {% else %}
+            <p><a href="{% url 'login' %}">Login</a></p>
+        {% endif %}
+
     </div> 
         {% block content %}
         {% endblock %}

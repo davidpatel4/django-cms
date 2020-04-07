@@ -134,3 +134,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 # 127.0.0.1:8000/blog/static/blog/images/cloud-azure.jpg
 
 # 127.0.0.1:8000/static/blog/images/cloud-azure.jpg
+
+#Authentication URLS
+LOGIN_REDIRECT_URL = '/blogs'
+LOGOUT_REDIRECT_URL =  '/blogs'

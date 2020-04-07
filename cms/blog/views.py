@@ -6,6 +6,7 @@ from blog.forms import PostForm
 from django.views import View
 from blog.models import Post,Category
 from django.views.generic import ListView,DetailView,FormView,CreateView,UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 # def index(request,*args,**kwargs):
@@ -54,7 +55,8 @@ def post_details(request,id,*args,**kwargs):
         
 #         return render(request,"blog/details.html",context={"post":post})
 
-class PostDetailView(DetailView):
+class PostDetailView(LoginRequiredMixin,DetailView):
+    login_url = 'login'
     model = Post
     # queryset = Post.objects.filter(status = "P")
     template_name = "blog/details.html"

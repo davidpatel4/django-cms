@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from django.urls import reverse
+from account.models import Profile
 # Create your models here.
 
 # Post:
@@ -26,6 +27,7 @@ class Post(models.Model):
     status = models.CharField(max_length=1,choices=statuses)
     category = models.ForeignKey(Category,on_delete=models.CASCADE,related_name="posts")
     image = models.ImageField(upload_to="blog/post",blank = True)
+    author = models.ForeignKey(Profile,on_delete= models.CASCADE)
 
     def __str__(self):
         return self.title
